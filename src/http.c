@@ -46,6 +46,12 @@
 #include "common.h"
 
 #include "util.h"
+#define SIZE 50
+
+struct Account {
+	char username[40];
+	char password[40];
+};
 
 
 extern pthread_mutex_t client_list_mutex;
@@ -759,16 +765,73 @@ http_nodogsplash_check_userpass(request *r, t_auth_target *authtarget)
 		return 0;
 	}
 
-	if ((!config->usernameauth || (authtarget->username && !strcmp(config->username,authtarget->username)))
-			&& (!config->passwordauth || (authtarget->password && !strcmp(config->password,authtarget->password)))) {
-		/* password and username match; success */
-		debug(LOG_NOTICE, "Client %s %s username/password '%s'/'%s'",
-			  ip, mac,
-			  authtarget->username,
-			  authtarget->password);
-		free(mac);
-		return 1;
+	if (config->usernameauth && config->passwordauth){ //if set username and password
+		// debug(LOG_NOTICE, "config->username: %s", config->username);
+		// debug(LOG_NOTICE, "config->password: %s", config->password);
+		// char buf1[] = config->username;
+		// char buf2[] = config->password;
+
+
+		char *username;
+		char *password;
+		struct Account users[SIZE];
+		char *substr = NULL;
+		const char *delim = " ";
+		int idx = 0;
+
+
+		username = malloc(sizeof(char) * strlen(config->username));
+		password = malloc(sizeof(char) * strlen(config->password));
+
+		strcpy(username, config->username);
+		strcpy(password, config->password);
+
+		memset(users, 0, sizeof(struct Account) * SIZE);
+		int listsize = 0;
+		idx = 0;
+		substr = strtok(username, delim);
+		do {
+			// printf("substr=%s\n", substr);
+			listsize = listsize+1;
+			strcpy(users[idx++].username, substr);
+			substr = strtok(NULL, delim);
+		} while (substr);
+
+		idx = 0;
+		substr = strtok(password, delim);
+		do {
+			// printf("substr=%s\n", substr);
+			strcpy(users[idx++].password, substr);
+			substr = strtok(NULL, delim);
+		} while (substr);
+
+		for(idx = 0; idx < listsize; idx++) {
+			// debug(LOG_NOTICE, "config->username: %s", users[idx].username);
+			// debug(LOG_NOTICE, "config->password: %s", users[idx].password);
+			if(!strcmp(users[idx].username,authtarget->username)&&!strcmp(users[idx].password,authtarget->password)){
+				debug(LOG_NOTICE, "Client %s %s username/password '%s'/'%s'",
+					ip, mac,
+					authtarget->username,
+					authtarget->password);
+				free(mac);
+				return 1;
+			}
+		}
+
+		free(password);
+		free(username);
+		
 	}
+	// if ((!config->usernameauth || (authtarget->username && !strcmp(config->username,authtarget->username)))
+	// 		&& (!config->passwordauth || (authtarget->password && !strcmp(config->password,authtarget->password)))) {
+	// 	/* password and username match; success */
+	// 	debug(LOG_NOTICE, "Client %s %s username/password '%s'/'%s'",
+	// 		  ip, mac,
+	// 		  authtarget->username,
+	// 		  authtarget->password);
+	// 	free(mac);
+	// 	return 1;
+	// }
 
 	/* fail */
 	debug(LOG_NOTICE, "Client %s %s bad username/password '%s'/'%s'",

@@ -1,5 +1,6 @@
 
-CC?=gcc
+# CC?=gcc
+CC=arm-openwrt-linux-gcc 
 CFLAGS?=-O2
 CFLAGS+=-Isrc -Ilibhttpd
 #CFLAGS+=-Wall -Wwrite-strings -pedantic -std=gnu99
