@@ -1,4 +1,4 @@
-##0. The Nodogsplash project
+## 0. The Nodogsplash project
 
 Nodogsplash offers a simple way to provide restricted access to an internet
 connection. It is derived from the codebase of the Wifi Guard Dog project.
@@ -12,7 +12,7 @@ Nodogsplash is released under the GNU General Public License.
 The following describes what Nodogsplash does, how to get it and run it, and
 how to customize its behavior for your application.
 
-##1. Overview
+## 1. Overview
 
 Nodogsplash offers a solution to this problem: You want to provide controlled
 and reasonably secure public access to an internet connection; and while you
@@ -32,7 +32,7 @@ Specific features of Nodogsplash are configurable, by editing the configuration
 file and the splash page. The default installed configuration may be all you
 need, though.
 
-##2. Installing and running nodogsplash
+## 2. Installing and running nodogsplash
 
 
 * Have a router working with OpenWrt. Nodogsplash has been compiled against a
@@ -71,7 +71,7 @@ need, though.
 
     ```opkg remove nodogsplash```
 
-##3. How nodogsplash works
+## 3. How nodogsplash works
 
 A wireless router running OpenWrt has two or more interfaces; nodogsplash
 manages one of them. This will typically be br-lan, the bridge to both the
@@ -79,7 +79,7 @@ wireless and wired LAN; or the wireless lan interface may be named something
 else if you have broken the br-lan bridge to separate the wired and wireless
 LAN's.
 
-###3.1 Packet filtering
+### 3.1 Packet filtering
 
 Nodogsplash considers four kinds of packets coming into the router over the
 managed interface. Each packet is one of these kinds:
@@ -120,7 +120,7 @@ marks. Because it inserts its rules at the beginning of existing chains,
 nodogsplash should be insensitive to most typical existing firewall
 configurations.
 
-###3.2 Traffic control
+### 3.2 Traffic control
 
 Nodogsplash also optionally implements basic traffic control on its managed
 interface. This feature lets you specify the maximum aggregate upload and
@@ -134,7 +134,7 @@ fairness queueing is done).
 
 Note: IMQ is not included anymore by OpenWrt Attitude Adjustment (12.09).
 
-##4. Customizing nodogsplash
+## 4. Customizing nodogsplash
 
 The default shipped configuration is intended to be usable and reasonably
 secure as-is for basic internet sharing applications, but it is customizable.
@@ -209,9 +209,9 @@ replaced by their values. $title is a summary of the information or kind of
 error; *$content* is the content of the information or error message.
 
 
-##5. Authentication
+## 5. Authentication
 
-###5.1 Site-wide username and password
+### 5.1 Site-wide username and password
 
 Nodogsplash can be configured to require a username and/or password to be
 entered on the splash page as part of the authentication process. Since the
@@ -235,7 +235,7 @@ respectively, along with others as required, to the server. For example:
   </form>
 ```
 
-###5.2 Forwarding authentication
+### 5.2 Forwarding authentication
 
 Nodogsplash allows to call an external program for authentication using
 the options BinVoucher/EnablePreAuth/ForceVoucher in nodogsplash.conf.
@@ -244,7 +244,7 @@ The output is expected to be the number of seconds the client is to be authentic
 It may also contain the clients download and upload speed limit in KBits/s.
 See the example configuration file for further details.
 
-##6. Using ndsctl
+## 6. Using ndsctl
 
 A nodogsplash install includes ndsctl, a separate application which provides
 some control over a running nodogsplash process by communicating with it over a
@@ -284,7 +284,7 @@ For more options, run ndsctl -h. (Note that if you want the effect of ndsctl
 commands to to persist across nodogsplash restarts, you have to edit the
 configuration file.)
 
-##7. Debugging nodogsplash
+## 7. Debugging nodogsplash
 
 
 * To see maximally verbose debugging output from nodogsplash, edit the
