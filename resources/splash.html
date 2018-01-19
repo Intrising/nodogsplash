@@ -3,49 +3,36 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>$gatewayname</title>
 	<style type="text/css">
-	li {font-size:12px;	border-radius:5px; padding:4px 18px;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(39%, #cc0), color-stop(66%, #c90) );
-	background:-moz-linear-gradient( center top, #cc0 39%, #c90 66% );
-	background:-ms-linear-gradient( top, #cc0 39%, #c90 66% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc0', endColorstr='#c90');
-	display:inline-block;list-style-type :none;}
-	.ad {line-height: 15px;}
-	a {text-decoration:none; color:#fff;}
-	label { font-size: 12px;color: #fff; display:block;}
-	select {display:block;}
-	.backg { background-color: #963;text-align:center; line-height:30px; color:#fff;}
-	.word {font-family: "Comic Sans MS", cursive;color: #F00;font-size: 12px;}
-	.from-sigin-heading{display:none;}
-	</style></head><body><center>
-	<table width="480" height="560" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-		<td colspan="5" height="150"><img src="$imagesdir/header.jpg" /></td>
-	  </tr>
-	  <tr>
-		<td colspan="5" width="480" height="220" class="backg">
-		  <center>
-			<div>$gatewayname</div>
-		  </center>
-		  <center>
-			<div id="windows1">
-			  
-			  <div class="container"></div>
-			  <form method='GET' action='$authaction'>
-				<input type='hidden' name='tok' value='$tok'>
-				<input type='hidden' name='redir' value='$redir'>
-				<input type="text" name="nodoguser" id="username" placeholder="Username" maxlength='12'>
-				<input type="text" name="nodogpass" id="password" placeholder="Password" maxlength='10'>
-				<br>
-				<input type='submit' value='Enter'>
-			  </form>
+	body{font-size: 36}
+	.container{background-color: #72c02c;width: 600px}
+	form{margin:0 0 0 0 ;display: inline-block;text-align: center; }
+	input{height:25px;width: 200px;margin:10 0 10 0 }
+	.inputbox{height: 50px;width: 400px}
+	.Isubmit{line-height: 1;height:80px;width: 200px;cursor:pointer;background-color:aliceblue;font-size: 32px}
+	p{color: white}
+	</style>
+	</head>
+	<body width="100%" height="100%">
+		<center>
+			<div style="width:85%">
+				<img style="width:100%" src="header.jpg" />
 			</div>
-			<p>&nbsp;</p>
-		  </center>
-		</td>
-	  </tr>
-	</td></tr>
-	  <tr>
-		<td colspan="5" height="75"><img src="$imagesdir/footer.jpg" /></td>
-	  </tr></table>
-	</body></center></html>
-	
+			<div class="container" style="width:85%;">
+				 
+				<form method='GET' action='$authaction'>
+					<p>$gatewayname</p>
+					<input type='hidden' name='tok' value='$tok' >
+					<input type='hidden' name='redir' value='$redir'> username:
+					<input type='text' name='nodoguser' size='12' class="inputbox">
+					<br> password:
+					<input type='password' name='nodogpass' size='12' class="inputbox">
+					<br>
+					<input type='submit' value='Enter' class="Isubmit">
+				</form>
+			</div>
+			<div style="width:85%">
+				<img style="width:100%" src="footer.jpg" />
+			</div>
+		</center>
+	</body>
+</html>
