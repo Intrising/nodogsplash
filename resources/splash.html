@@ -1,38 +1,54 @@
+<html>
 
-<html><head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>$gatewayname</title>
-	<style type="text/css">
-	body{font-size: 36}
-	.container{background-color: #72c02c;width: 600px}
-	form{margin:0 0 0 0 ;display: inline-block;text-align: center; }
-	input{height:25px;width: 200px;margin:10 0 10 0 }
-	.inputbox{height: 50px;width: 400px;font-size: 32px}
-	.Isubmit{line-height: 1;height:80px;width: 200px;cursor:pointer;background-color:aliceblue;font-size: 32px}
-	p{color: white}
-	</style>
-	</head>
-	<body width="100%" height="100%">
-		<center>
-			<div style="width:85%">
-				<img style="width:100%" src="$imagesdir/header.jpg" />
-			</div>
-			<div class="container" style="width:85%;">
-				 
-				<form method='GET' action='$authaction'>
-					<p>$gatewayname</p>
-					<input type='hidden' name='tok' value='$tok' >
-					<input type='hidden' name='redir' value='$redir'> username:
-					<input type='text' name='nodoguser' size='12' class="inputbox">
-					<br> password:
-					<input type='password' name='nodogpass' size='12' class="inputbox">
-					<br>
-					<input type='submit' value='Enter' class="Isubmit">
-				</form>
-			</div>
-			<div style="width:85%">
-				<img style="width:100%" src="$imagesdir/footer.jpg" />
-			</div>
-		</center>
-	</body>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title name="title">$gatewayname</title>
+        <style type="text/css">
+            body {font-size: 36}
+			.container {background-color: #72c02c;width: 600px}
+			form { margin: 0 0 0 0; display: inline-block; text-align: center;}
+			input { height: 25px; width: 200px; margin: 10 0 10 0 }
+			.inputbox { height: 50px; width: 400px; font-size: 32px}
+			.Isubmit {line-height: 1; height: 80px; width: 200px; cursor: pointer; background-color: aliceblue; font-size: 32px}
+			p { color: white }
+        </style>
+</head>
+
+<body width="100%" height="100%">
+        <div style="visibility: hidden" id="gate">Name,Konto,Pass</div>
+        <center>
+                <div style="width:85%">
+                        <img style="width:100%" src="$imagesdir/header" />
+                </div>
+                <div class="container" style="width:85%;">
+
+                        <form method='GET' action='$authaction'>
+                                <p>$gatewayname</p>
+                                <input type='hidden' name='tok' value='$tok'>
+                                <input type='hidden' name='redir' value='$redir'>
+                                <div id="username" style="display: inline-block">username:</div>
+                                <input type='text' name='nodoguser' size='12' class="inputbox" style="display: inline-block">
+                                <br>
+                                <div id="password" style="display: inline-block">password:</div> 
+                                <input type='password' name='nodogpass' size='12' class="inputbox" style="display: inline-block">
+                                <br>
+                                <input type='submit' value='Enter' class="Isubmit">
+                        </form>
+                </div>
+                <div style="width:85%">
+                        <img style="width:100%" src="$imagesdir/footer" />
+                </div>
+        </center>
+</body>
+<script>
+        
+        var str = document.getElementById("gate").textContent;
+                str = str.split(",");
+                document.getElementsByTagName("TITLE")[0].innerHTML = str[0];
+                if (str[1] && str[2]){
+                        document.getElementById("username").textContent = str[1] + ":"
+                        document.getElementById("password").textContent = str[2] + ":"
+                }          
+</script>
+
 </html>
