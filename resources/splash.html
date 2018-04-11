@@ -15,7 +15,7 @@
 </head>
 
 <body width="100%" height="100%">
-        <div style="visibility: hidden" id="gate">Name,Konto,Pass</div>
+        <div style="visibility: hidden" id="gate">$gatewayname</div>
         <center>
                 <div style="width:85%">
                         <img style="width:100%" src="$imagesdir/header" />
@@ -23,7 +23,7 @@
                 <div class="container" style="width:85%;">
 
                         <form method='GET' action='$authaction'>
-                                <p>$gatewayname</p>
+                                
                                 <input type='hidden' name='tok' value='$tok'>
                                 <input type='hidden' name='redir' value='$redir'>
                                 <div id="username" style="display: inline-block">username:</div>
