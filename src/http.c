@@ -806,8 +806,10 @@ http_nodogsplash_check_userpass(request *r, t_auth_target *authtarget)
 		} while (substr);
 
 		for(idx = 0; idx < listsize; idx++) {
-			// debug(LOG_NOTICE, "config->username: %s", users[idx].username);
-			// debug(LOG_NOTICE, "config->password: %s", users[idx].password);
+			debug(LOG_NOTICE, "config->username: %s", users[idx].username);
+			debug(LOG_NOTICE, "authtarget->username: %s", authtarget->username);
+			debug(LOG_NOTICE, "config->password: %s", users[idx].password);
+			debug(LOG_NOTICE, "authtarget->password: %s", authtarget->password);
 			if(!strcmp(users[idx].username,authtarget->username)&&!strcmp(users[idx].password,authtarget->password)){
 				debug(LOG_NOTICE, "Client %s %s username/password '%s'/'%s'",
 					ip, mac,
