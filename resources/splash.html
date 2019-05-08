@@ -1,91 +1,89 @@
 <html>
 
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title name="title">Login</title>
-        <style type="text/css">
-                body {
-                        font-size: 36;
-                        align-content: "center"
-                }
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title name="title">Login</title>
+    <style type="text/css">
+        body {
+            font-size: 36;
+            align-content: "center"
+        }
 
-                .container {
-                        background-color: lightgray;
-                        width: 50%;
-                        margin: 0px auto;
-                }
+        .container {
+            background-color: lightgray;
+            width: 80%;
+            margin: 0px auto;
+        }
 
-                form {
-                        margin: 0 0 0 0;
-                        display: inline-block;
-                        text-align: center;
-                }
+        form {
+            margin: 0 0 0 0;
+            display: inline-block;
+            text-align: center;
+        }
 
-                input {
-                        height: 25px;
-                        width: 180px;
-                        margin: 10 0 10 0
-                }
+        input {
+            height: 25px;
+            width: 180px;
+            margin: 10 0 10 0
+        }
 
-                .inputbox {
-                        height: 40px;
-                        width: 300px;
-                        font-size: 24px;
-                        border-radius: 5px;
-                        box-shadow: none;
-                        display: block;
-                }
+        .inputbox {
+            height: 40px;
+            width: 300px;
+            font-size: 24px;
+            border-radius: 5px;
+            box-shadow: none;
+            display: block;
+        }
 
-                .Isubmit {
-                        line-height: 1;
-                        height: 50px;
-                        width: 100px;
-                        cursor: pointer;
-                        background-color: white;
-                        font-size: 24px;
-                        border-radius: 5px;
-                        margin: auto;
-                }
+        .Isubmit {
+            line-height: 1;
+            height: 50px;
+            width: 100px;
+            cursor: pointer;
+            background-color: white;
+            font-size: 24px;
+            border-radius: 5px;
+            margin: auto;
+        }
 
-                p {
-                        color: white
-                }
-        </style>
+        p {
+            color: white
+        }
+    </style>
 </head>
 
 <body>
-        <div style="visibility: hidden" id="gate">$gatewayname</div>
-        <div class="container">
-                <img style="width:100%; height:35%" src="$imagesdir/header" />
-                <form method='GET' action='$authaction' style="width: 100%; margin-bottom: 10px">
-                        <input type='hidden' name='tok' value='$tok'>
-                        <input type='hidden' name='redir' value='$redir'>
-                        <div>
-                                <div id="username" style="display: inline-block">Username</div>
-                                <input type='text' name='nodoguser' size='12' class="inputbox"
-                                        style="display: inline-block">
-                        </div>
-                        <div>
-                                <div id="password" style="display: inline-block">Password</div>
-                                <input type='password' name='nodogpass' size='12' class="inputbox"
-                                        style="display: inline-block">
-                        </div>
-                        <div>
-                                <button type='submit' class="Isubmit">Login</button>
-                        </div>
-                </form>
-                <img style="width:100%; height:35%" src="$imagesdir/footer" />
-        </div>
+    <div style="visibility: hidden; display: none;" id="gate" >$gatewayname</div>
+    <div class="container">
+        <img style="width:100%; height:auto" src="$imagesdir/header" />
+        <form method='GET' action='$authaction' style="width: 100%; margin-bottom: 10px">
+            <input type='hidden' name='tok' value='$tok'>
+            <input type='hidden' name='redir' value='$redir'>
+            <div>
+                <div id="username" style="display: inline-block">Username</div>
+                <input type='text' name='nodoguser' size='12' class="inputbox" style="display: inline-block">
+            </div>
+            <div>
+                <div id="password" style="display: inline-block">Password</div>
+                <input type='password' name='nodogpass' size='12' class="inputbox" style="display: inline-block">
+            </div>
+            <div>
+                <button type='submit' class="Isubmit">Login</button>
+            </div>
+        </form>
+        <img style="width:100%; height: auto" src="$imagesdir/footer" />
+    </div>
 </body>
 <script>
 
-        var str = document.getElementById("gate").textContent;
-        str = str.split(",");
-        document.getElementsByTagName("TITLE")[0].innerHTML = str[0];
-        if (str[1] && str[2]) {
-                document.getElementById("username").textContent = str[1]
-                document.getElementById("password").textContent = str[2]
-        }          
+    var str = document.getElementById("gate").textContent;
+    str = str.split(",");
+    document.getElementsByTagName("TITLE")[0].innerHTML = str[0];
+    if (str[1] && str[2]) {
+        document.getElementById("username").textContent = str[1]
+        document.getElementById("password").textContent = str[2]
+    }          
 </script>
 
 </html>
